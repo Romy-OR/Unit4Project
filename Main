@@ -7,9 +7,19 @@ public class Main
         Scanner text = new Scanner(file);
         
         while (text.hasNextLine()){
-            System.out.println(text.nextLine());
+            String str = text.nextLine();
+            int index1 = str.indexOf("|");
+            int index2 = str.indexOf("|", index1 + 1);
+            int index3 = str.indexOf("|", index2 + 1);
+            int index4 = str.indexOf("|", index3 + 1);
+            int index5 = str.indexOf("|", index4 + 1);
+            System.out.println();
+            System.out.println(index5);
         }
         
+        //Song song1 = new Song("Opeth", "The Drapery Falls", "none", 2001);
+		//System.out.println(song1);
+		
+		
     }
 }
-
