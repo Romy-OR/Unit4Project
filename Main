@@ -6,20 +6,27 @@ public class Main
         File file = new File("top100streams.txt");
         Scanner text = new Scanner(file);
         
+        //I actually did try the extra thing but none of the spotify playlist extractors I tried kept all of the
+        //info when it saved to .txt or even .csv. It was always missing the years or only had the title/artist.
+        System.out.println("Top Streams of 2016");
+        int num = 1;
         while (text.hasNextLine()){
             String str = text.nextLine();
             int index1 = str.indexOf("|");
             int index2 = str.indexOf("|", index1 + 1);
             int index3 = str.indexOf("|", index2 + 1);
             int index4 = str.indexOf("|", index3 + 1);
-            int index5 = str.indexOf("|", index4 + 1);
-            System.out.println();
-            System.out.println(index5);
+            String title = str.substring(index1 + 1, index2);
+            String artist = str.substring(index2 + 1, index3);
+            String album = str.substring(index3 + 1, index4);
+            String year = str.substring(str.length() - 4);
+            Song thisSong = new Song(title, artist, album, year);
+            if (year.equals("2016")){
+                System.out.println(num);
+                num++;
+                System.out.println(thisSong.toString());
+                System.out.println();
+            }
         }
-        
-        //Song song1 = new Song("Opeth", "The Drapery Falls", "none", 2001);
-		//System.out.println(song1);
-		
-		
     }
 }
